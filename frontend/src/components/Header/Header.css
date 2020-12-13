@@ -1,0 +1,21 @@
+/* ---------------- */
+.navbar {
+  background: black;
+  padding-left: 50px;
+}
+
+.navbar > button {
+  background: rgb(241, 240, 240);
+}
+
+.navbar a {
+  color: rgb(241, 240, 240);
+}
+
+.navbar .navbar-collapse .nav-item {
+  padding-left: 20px;
+}
+
+.navbar .navbar-collapse .nav-item.active > a {
+  color: rgb(199, 194, 194);
+}
