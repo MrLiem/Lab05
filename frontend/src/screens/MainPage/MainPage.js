@@ -12,7 +12,7 @@ const MainPage = () => {
   }, []);
 
   const getItems = async () => {
-    const response = await axios.get("http://localhost:5000/items/");
+    const response = await axios.get("/items");
     if (response.data.success) {
       let items = response.data.items;
       setItems(items);

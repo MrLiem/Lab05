@@ -70,28 +70,20 @@ const UpdateItemPage = (props) => {
       brand,
     };
     // Request update item
-    const response = await axios.put(
-      "http://localhost:5000/items/",
-      updatedItem,
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.put("/items", updatedItem, {
+      withCredentials: true,
+    });
     if (response.data.success) {
       // Send image after successfully send json data
       let formData = new FormData();
       formData.append("image", image);
       // Request update image
-      const response2 = await axios.put(
-        "http://localhost:5000/items/uploadUpdatedImage",
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response2 = await axios.put("/items/uploadUpdatedImage", formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (response2.data.success) {
         alert("upload image Ok");
         history.push("/adminPage");

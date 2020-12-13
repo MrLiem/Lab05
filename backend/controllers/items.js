@@ -21,8 +21,8 @@ const upload = multer({
 });
 
 // GET ALL Items
-router.get("/", auth, async (req, res) => {
-  let items = await Item.find();
+router.get("/", async (req, res) => {
+  let items = await Item.find({});
   res.json({ success: true, items: items });
 });
 

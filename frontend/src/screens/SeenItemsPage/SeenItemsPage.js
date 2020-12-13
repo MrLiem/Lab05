@@ -23,7 +23,7 @@ const SeenItemPage = () => {
   }, []);
 
   const getSeenItemsFromUser = async () => {
-    const response = await axios.get("http://localhost:5000/items/seenItem", {
+    const response = await axios.get("/items/seenItem", {
       withCredentials: true,
     });
     if (response.data.success) {
@@ -36,7 +36,7 @@ const SeenItemPage = () => {
 
   const getSeenItemsFromSess = async (encodeSeenItems) => {
     const response = await axios.get(
-      `http://localhost:5000/items/seenItemFromSession/seenItems=${encodeSeenItems}`,
+      `/items/seenItemFromSession/seenItems=${encodeSeenItems}`,
       {
         withCredentials: true,
       }

@@ -1,10 +1,9 @@
+const path = require("path");
 // import thư viện cài đặt thêm
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-const cors = require("cors");
-
 //import file
 const config = require("./config/key");
 
@@ -25,12 +24,19 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 /*-----------Route for request add, update, delete item, user------------------ */
 app.use("/items/", require("./controllers/items"));
 app.use("/users/", require("./controllers/users"));
 /*---------------------------------------------- */
+
+// Serve index.html to server
+const publicPath = path.join(__dirname, "..", "frontend/build");
+app.use(express.static(publicPath));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
+});
 
 app.listen(port, () => {
   console.log(`server listen on port ${port}`);

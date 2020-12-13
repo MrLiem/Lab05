@@ -11,7 +11,7 @@ const Header = () => {
 
   const logout = async (event) => {
     event.preventDefault();
-    const response = await axios.get("http://localhost:5000/users/logout", {
+    const response = await axios.get("/users/logout", {
       withCredentials: true,
     });
 
@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <header id="main-head">
       <nav className="navbar navbar-expand-sm nav_custom">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           IT SHOP
         </a>
         <button

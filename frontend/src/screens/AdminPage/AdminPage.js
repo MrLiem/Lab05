@@ -10,7 +10,7 @@ const AdminPage = () => {
   const [adminEmail, setAdminEmail] = useState("");
 
   const getAdminItems = async () => {
-    const response = await axios.get("http://localhost:5000/items/admin", {
+    const response = await axios.get("/items/admin", {
       withCredentials: true,
     });
     if (response.data.success) {
@@ -26,7 +26,7 @@ const AdminPage = () => {
   const deleteItem = async (id) => {
     // Delete Item
     const response = await axios.delete(
-      "http://localhost:5000/items/",
+      "/items",
       { data: { id } },
       {
         withCredentials: true,

@@ -9,12 +9,9 @@ const DetailItemPage = () => {
   const id = useParams();
 
   const getDetailItem = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/items/detailItem/${id.id}`,
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.get(`/items/detailItem/${id.id}`, {
+      withCredentials: true,
+    });
     if (response.data.success) {
       // Save to sessionStorage seen itemId if someone not authenticated gets detailItemPage
       let itemId = id.id;

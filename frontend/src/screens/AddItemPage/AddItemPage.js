@@ -60,7 +60,7 @@ const AddItemPage = () => {
       brand,
     };
     // Add new Item
-    const response = await axios.post("http://localhost:5000/items/", newItem, {
+    const response = await axios.post("/items", newItem, {
       withCredentials: true,
     });
     if (response.data.success) {
@@ -70,16 +70,12 @@ const AddItemPage = () => {
         return alert("Please add an image!!!");
       }
       formData.append("image", image);
-      const response2 = await axios.post(
-        "http://localhost:5000/items/uploadNewImage",
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response2 = await axios.post("/items/uploadNewImage", formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (response2.data.success) {
         alert("upload image Ok");
         history.push("/adminPage");
